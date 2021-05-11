@@ -1,0 +1,21 @@
+{
+    "name": "admin/fly",
+    "authors": [
+        {
+            "name": "Yusfuu",
+            "email": "youssefhajjari01@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.3",
+        "firebase/php-jwt": "^5.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "."
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}
