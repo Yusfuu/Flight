@@ -39,7 +39,8 @@ Folder Database/fly.sql
 
 >**Admin**   
 `http://localhost:8080/a/account/signin`  
-`http://localhost:8080/a/account/dashboard`  
+`http://localhost:8080/a/account/dashboard`   
+`http://localhost:8080/a/account/reservation`
 
 >**User**  
 `http://localhost:8080/account/signin`  
