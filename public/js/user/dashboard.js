@@ -39,7 +39,8 @@ submitPassengers.onclick = () => {
     .then(data => {
       if (data.error === false) {
         const places = document.querySelector(`[data-fid="${fid}"]`).parentElement.children[1].children[1].children[2].children[1];
-        places.innerText = (places.innerText.split('')[0] - (reservation.passengers.length + 1)) + " Seats";
+        let n = places.innerText.split('Seats')[0] - (reservation.passengers.length + 1);
+        places.innerText = n + " Seats";
         sweetAlert('success', data.message);
       } else {
         sweetAlert('warning', data.message);
