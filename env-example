@@ -1,0 +1,4 @@
+DSN=mysql:host=localhost;dbname=example
+USERNAME=root
+PASSWORD=
+KEY=
