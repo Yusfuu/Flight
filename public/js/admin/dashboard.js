@@ -130,7 +130,7 @@ logout.onclick = () => {
 async function initFlights() {
   const resposne = await fetch('http://localhost:8080/api/flights');
   const { body } = await resposne.json();
-
+  boxs = [...body]
   body.forEach(_f => flights.insertAdjacentHTML('afterbegin', card(_f)));
 }
 
@@ -220,3 +220,18 @@ function sweetAlert(_icon, _title) {
     timer: 1500
   })
 }
+
+
+let search = document.querySelector("body > header > input");
+let boxs = [...document.querySelectorAll('[data-flight]')];
+
+search.addEventListener('input', () => {
+  let value = search.value.toLocaleLowerCase();
+  const filteredFlights = boxs.filter(flight => {
+    return (flight.type.toLocaleLowerCase().includes(value) ||
+      flight.origin.toLocaleLowerCase().includes(value) ||
+      flight.destination.toLocaleLowerCase().includes(value));
+  });
+  flights.innerHTML = "";
+  filteredFlights.forEach(_f => flights.insertAdjacentHTML('afterbegin', card(_f)));
+});

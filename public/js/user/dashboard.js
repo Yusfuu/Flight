@@ -117,6 +117,7 @@ async function loadFlight() {
   isLoading = true;
   const response = await fetch('http://localhost:8080/api/reservation/pagination', config({ offset }));
   const { body, offset: _offset } = await response.json();
+  boxs = [...boxs, ...body];
   const promises = await Promise.all(body.map(({ destination }) => fetch(apiPic(destination))));
   const jsons = await Promise.all(promises.map(pic => pic.json()));
   const x = await Promise.all(jsons.map(src => fetch(src.results[0].urls.regular)));
@@ -165,3 +166,26 @@ function card(params, src) {
 }
 
 loadFlight();
+
+let search = document.querySelector("body > div > header > div > input");
+let boxs = [];
+
+search.addEventListener('input', () => {
+  let value = search.value.toLocaleLowerCase();
+
+  const filterBoxs = boxs.filter(flight => {
+    return (flight.type.toLocaleLowerCase().includes(value) ||
+      flight.origin.toLocaleLowerCase().includes(value) ||
+      flight.destination.toLocaleLowerCase().includes(value));
+  });
+  ids = filterBoxs.map(e => e.id);
+
+  document.querySelectorAll('[data-fid]').forEach(element => {
+    let ell = element.parentElement.parentElement.parentElement.parentElement.parentElement;
+    if (ids.includes(element.dataset.fid)) {
+      ell.style.display = '';
+    } else {
+      ell.style.display = 'none';
+    }
+  });
+});

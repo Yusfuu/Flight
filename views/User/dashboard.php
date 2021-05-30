@@ -19,8 +19,9 @@
 
   <div class="container d-flex w-100 p-3 mx-auto flex-column">
     <header class="mb-auto">
-      <div>
+      <div class=" d-flex justify-content-around">
         <h3 class="float-md-start mb-0">{{firstName}} {{lastName}}</h3>
+        <input type="search" placeholder="What're you searching for ?" class="form-control w-25">
         <nav class="nav nav-masthead justify-content-center float-md-end">
           <a class="nav-link active" aria-current="page" href="/account/dashboard">Flights</a>
           <a class="nav-link" href="/account/reservation">Reservation</a>
